@@ -1,0 +1,174 @@
+/* ================= CARD ================= */
+.car-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.18);
+}
+
+/* ================= IMAGE ================= */
+.car-img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ================= TITLE ================= */
+.car-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f2a44;
+  margin-bottom: 6px;
+}
+
+/* ================= PRICE ================= */
+.car-price {
+  font-size: 20px;
+  font-weight: 900;
+  color: #16a34a;
+  margin-bottom: 14px;
+}
+
+.car-price span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+}
+
+/* ================= GRADIENT BUTTON ================= */
+.btn-gradient {
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(90deg, #0f2a44, #b11226);
+  border: none;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+  color: #fff;
+}
+
+/* ================= OUTLINE BUTTON ================= */
+.btn-outline-gradient {
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f2a44;
+  background: transparent;
+  border: 2px solid #0f2a44;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-outline-gradient:hover {
+  background: #0f2a44;
+  color: #fff;
+}
+
+/* ================= BADGE ================= */
+.badge-unavailable {
+  padding: 8px;
+  border-radius: 12px;
+  background: #e5e7eb;
+  color: #374151;
+  font-weight: 700;
+}
+.pagination-box {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li a,
+.pagination li span {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 800;
+  text-decoration: none;
+  color: #0f2a44;
+  background: #eef2f7;
+  transition: 0.3s;
+}
+
+.pagination li a:hover {
+  background: linear-gradient(135deg, #0f2a44, #b11226);
+  color: #fff;
+}
+
+.pagination li.active span {
+  background: linear-gradient(135deg, #0f2a44, #b11226);
+  color: #fff;
+}
+
+
+/* ================= STATUS BADGE ================= */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* ===== AVAILABLE ===== */
+.status-badge.available {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+/* ===== RESERVED ===== */
+.status-badge.reserved {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+/* ===== SOLD ===== */
+.status-badge.sold {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .car-img {
+    height: 200px;
+  }
+
+  .car-title {
+    font-size: 15px;
+  }
+
+  .car-price {
+    font-size: 18px;
+  }
+}

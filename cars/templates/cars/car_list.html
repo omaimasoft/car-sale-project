@@ -1,0 +1,103 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block title %}السيارات{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/car_custom.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row g-4">
+
+    {% for car in page_obj %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+    <div class="card car-card h-100 position-relative">
+
+  {% if car.status == "sold" %}
+    <span class="status-badge sold">مباعة</span>
+  {% elif car.status == "reserved" %}
+    <span class="status-badge reserved">محجوزة</span>
+  {% else %}
+    <span class="status-badge available">متاحة</span>
+  {% endif %}
+
+        {# ===== IMAGE ===== #}
+        {% if car.image %}
+          <img src="{{ car.image.url }}" class="card-img-top car-img"
+               alt="{{ car.brand }} {{ car.model }}">
+        {% else %}
+          <img src="https://via.placeholder.com/400x250?text=No+Image"
+               class="card-img-top car-img">
+        {% endif %}
+
+        <div class="card-body text-center d-flex flex-column">
+
+          <h5 class="car-title">
+            {{ car.brand }} {{ car.model }}
+          </h5>
+
+          <p class="car-price">
+            {{ car.price }} <span>درهم</span>
+          </p>
+
+          <div class="mt-auto d-grid gap-2">
+            {% if car.status == "available" %}
+              <a href="{% url 'book_car' car.id %}" class="btn-gradient">
+                احجز الآن
+              </a>
+            {% elif car.status == "reserved" %}
+              <button class="btn btn-warning" disabled>
+                محجوزة
+              </button>
+            {% else %}
+              <button class="btn btn-danger" disabled>
+                مباعة
+              </button>
+            {% endif %}
+
+            <a href="{% url 'car_detail' car.id %}" class="btn-outline-gradient">
+              عرض التفاصيل
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <div class="col-12 text-center">
+        <p class="text-muted fs-5">لا توجد سيارات حالياً.</p>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{# ===== PAGINATION ===== #}
+
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination-box">
+  <ul class="pagination">
+
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">‹</a></li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <li class="active"><span>{{ num }}</span></li>
+      {% else %}
+        <li><a href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">›</a></li>
+    {% endif %}
+
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,163 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ offer.title }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/offer_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="offer-detail-page" dir="rtl">
+  <div class="offer-container">
+
+    <!-- ================= IMAGES SECTION ================= -->
+    <div class="offer-images">
+
+      <div class="main-image">
+        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+
+        {% if offer.discount_percent > 0 %}
+        <span class="badge discount">
+          -{{ offer.discount_percent }}%
+        </span>
+        {% endif %}
+
+        {% if not offer.is_expired %}
+        <span class="badge limited">
+          عرض محدود
+        </span>
+        {% endif %}
+      </div>
+
+      {% if offer.gallery.all %}
+      <div class="gallery">
+        {% for img in offer.gallery.all %}
+        <img src="{{ img.image.url }}" alt="صورة إضافية">
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- ================= INFO SECTION ================= -->
+    <div class="offer-info">
+
+      <h1 class="title">{{ offer.title }}</h1>
+      <p class="car-name">{{ offer.car_name }}</p>
+
+      <!-- RATING -->
+      <div class="rating">
+        {% for i in "12345" %}
+          {% if forloop.counter <= offer.rating %}
+            <span class="star filled">★</span>
+          {% else %}
+            <span class="star">★</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+  <div class="prices">
+  <span class="new-price">
+    {{ offer.new_price }} <small>درهم</small>
+  </span>
+  <span class="old-price">
+    {{ offer.old_price }} <small>درهم</small>
+  </span>
+</div>
+<!-- IMAGE POPUP -->
+<div id="imgPopup" class="img-popup">
+  <span class="img-close">&times;</span>
+  <img id="popupImg">
+</div>
+
+
+      <!-- TIME -->
+      <div class="time-box {% if offer.is_expired %}expired{% endif %}">
+        {% if not offer.is_expired %}
+           الوقت المتبقي: {{ offer.remaining_time }}
+        {% else %}
+           انتهى العرض
+        {% endif %}
+      </div>
+
+     <!-- DESCRIPTION -->
+      <div class="description">
+        <h3>تفاصيل العرض</h3>
+        <p>{{ offer.description }}</p>
+      </div> 
+
+      <!-- ACTIONS -->
+      <div class="actions">
+    <a href="#"
+   class="btn whatsapp"
+   onclick="sendOfferWhatsApp(event)">
+          واتساب
+      </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function sendOfferWhatsApp(event) {
+    event.preventDefault();
+
+    const phone = "212754179212"; // رقمك بدون +
+
+    const message = `
+مرحبًا 👋
+أود الاستفسار عن العرض التالي:
+
+🔥 {{ offer.title }}
+🚗 السيارة: {{ offer.car_name }}
+
+💰 السعر الجديد: {{ offer.new_price }} DH
+{% if offer.discount_percent > 0 %}
+🏷️ نسبة التخفيض: {{ offer.discount_percent }}%
+💵 السعر القديم: {{ offer.old_price }} DH
+{% endif %}
+
+⏳ الحالة: {% if offer.is_expired %}انتهى العرض{% else %}عرض ساري{% endif %}
+
+📝 الوصف:
+{{ offer.description|default:"-" }}
+
+🔗 رابط العرض:
+{{ request.build_absolute_uri }}
+
+شكرًا لكم 🌟
+    `;
+
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+}
+const popup = document.getElementById("imgPopup");
+const popupImg = document.getElementById("popupImg");
+const closeBtn = document.querySelector(".img-close");
+
+/* الصورة الرئيسية */
+const mainImage = document.querySelector(".main-image img");
+if (mainImage) {
+  mainImage.addEventListener("click", () => {
+    popup.style.display = "flex";
+    popupImg.src = mainImage.src;
+  });
+}
+
+/* الصور المصغّرة */
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.addEventListener("click", () => {
+    popup.style.display = "flex";
+    popupImg.src = img.src;
+  });
+});
+
+/* إغلاق */
+closeBtn.onclick = () => popup.style.display = "none";
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
+
+{% endblock %}

@@ -1,0 +1,214 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}موقع السيارات{% endblock %}</title>
+
+    <!-- SEO -->
+    <meta name="description" content="منصة احترافية لبيع وعرض السيارات بأفضل الأسعار">
+    <meta name="author" content="Car Site">
+      <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="{% static 'favicon_io/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_io/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'favicon_io/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'favicon_io/site.webmanifest' %}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    <!-- Bootstrap RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'cars/css/base.css' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<!-- ===== WhatsApp Floating Button (Premium) ===== -->
+<a href="https://wa.me/212754179212?text=مرحباً،%20أرغب%20في%20الاستفسار%20عن%20عروض%20السيارات"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="WhatsApp"
+   onclick="fbq('track', 'Contact');">
+   
+   <i class='bx bxl-whatsapp'></i>
+</a>
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+    <span>منصة لبيع السيارات</span>
+</div>
+<!-- ===== HEADER (LOGO + NAV) ===== -->
+<header class="main-header">
+    <div class="container header-layout">
+
+        <!-- LOGO (يمين) -->
+        <a href="{% url 'home' %}" class="navbar-brand">
+            {% comment %} <img src="{% static 'images/2-02.jpg' %}" alt="شعار الموقع" class="logo"> {% endcomment %}
+                        <img src="{% static 'images/foot.png' %}" alt="شعار الموقع" class="logo">
+
+        </a>
+
+        <!-- NAV (وسط) -->
+        <nav class="navbar navbar-expand-lg nav-center">
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'offers:offers_list' %}">العروض</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'car_list' %}">السيارات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact:contact_page' %}">اتصل بنا</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+</header>
+
+<!-- ===== CONTENT (مرة واحدة فقط) ===== -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer-premium">
+  <div class="container">
+
+    <div class="footer-top">
+
+      <!-- BRAND -->
+      <div class="footer-col brand-col">
+        <img src="{% static 'images/foot.png' %}" alt="Brand Logo" class="footer-logo">
+       <p class="brand-desc">
+        منصة رقمية متخصصة في بيع وحجز السيارات الجديدة والمستعملة بالمغرب،
+        نوفر لك تجربة موثوقة وسلسة لاختيار سيارتك المثالية بأفضل الأسعار،
+         مع التزام كامل بالجودة، .
+      </p>
+      </div>
+      <!-- LINKS -->
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="{% url 'home' %}">الرئيسية</a></li>
+          <li><a href="{% url 'car_list' %}">السيارات</a></li>
+          <li><a class="nav-link" href="{% url 'offers:offers_list' %}">العروض</a></li>
+          <li><a href="{% url 'contact:contact_page' %}">اتصل بنا</a></li>
+        </ul>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="footer-col">
+        <h4>خدماتنا</h4>
+        <ul>
+          <li><span>✔ بيع سيارات</span></li>
+          <li><span>✔ حجز مباشر</span></li>
+          <li><span>✔ عروض خاصة</span></li>
+          <li><span>✔ دعم سريع</span></li>
+        </ul>
+      </div>
+
+      <!-- SOCIAL -->
+<div class="footer-col">
+  <h4>تابعنا</h4>
+  <div class="social-modern">
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61586351497713&locale=ar_AR"
+       target="_blank"
+       aria-label="Facebook">
+      <i class='bx bxl-facebook'></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/auto_boustik/"
+       target="_blank"
+       aria-label="Instagram">
+      <i class='bx bxl-instagram'></i>
+    </a>
+
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/tiktokstudio"
+       target="_blank"
+       aria-label="TikTok">
+      <i class='bx bxl-tiktok'></i>
+    </a>
+
+    <!-- Gmail -->
+    <a href="https://mail.google.com/mail/u/0/#inbox"
+       target="_blank"
+       aria-label="Email">
+      <i class='bx bxl-gmail'></i>
+    </a>
+
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom">
+      © {{ now|date:"Y" }} جميع الحقوق محفوظة – منصة بيع السيارات
+    </div>
+
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '659145987221792'); 
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=659145987221792&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ car.brand }} {{ car.model }} | التفاصيل
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/car_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="car-detail-avito container mt-4">
+    <div class="row">
+
+   <!-- GALLERY -->
+<div class="col-lg-7 col-md-12 mb-4">
+    <div class="gallery-box">
+
+        <div class="main-image">
+
+            <!-- 🔢 عداد الصور -->
+            {% if car.images.all %}
+            <span class="image-count">
+                <i class='bx bx-images'></i>
+                {{ car.images.count|add:1 }} صور
+            </span>
+            {% endif %}
+
+            <!-- الصورة الرئيسية -->
+            <img id="mainImage" src="{{ car.image.url }}" class="img-fluid">
+        </div>
+
+        {% if car.images.all %}
+        <div class="thumbs">
+            <img src="{{ car.image.url }}"
+                 class="thumb active"
+                 onclick="changeImage(this)">
+
+            {% for img in car.images.all %}
+            <img src="{{ img.image.url }}"
+                 class="thumb"
+                 onclick="changeImage(this)">
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+<button class="nav-arrow left" onclick="prevImage()">
+    <i class='bx bx-chevron-right'></i>
+</button>
+<button class="nav-arrow right" onclick="nextImage()">
+    <i class='bx bx-chevron-left'></i>
+</button>
+
+        <!-- INFO -->
+        <div class="col-lg-5 col-md-12">
+            <div class="info-box">
+
+
+        <h1 class="car-title">{{ car.brand }} {{ car.model }}</h1>
+
+        <div class="price-box">
+            <span class="price">{{ car.price }} درهم</span>
+        </div>
+
+    <ul class="specs-grid">
+    <li>
+        <i class='bx bx-calendar'></i>
+        <span>سنة الصنع</span>
+        <strong>{{ car.year }}</strong>
+    </li>
+
+    <li>
+        <i class='bx bx-tachometer'></i>
+        <span>الكيلومتراج</span>
+        <strong>{{ car.mileage }} كم</strong>
+    </li>
+
+ <li>
+    <i class='bx bx-cog'></i>
+    <span>المحرك</span>
+    <strong>{{ car.power }}</strong>
+</li>
+
+    <li>
+        <i class='bx bx-gas-pump'></i>
+        <span>الوقود</span>
+        <strong>{{ car.get_fuel_type_display }}</strong>
+    </li>
+
+    <li>
+        <i class='bx bx-transfer-alt'></i>
+        <span>ناقل الحركة</span>
+        <strong>{{ car.get_transmission_display }}</strong>
+    </li>
+
+    <li>
+        <i class='bx bx-car'></i>
+        <span>الأبواب</span>
+        <strong>{{ car.doors }}</strong>
+    </li>
+
+    <li>
+        <i class='bx bx-check-shield'></i>
+        <span>الحالة</span>
+        <strong>{{ car.get_condition_display }}</strong>
+    </li>
+</ul>
+{% if car.description %}
+<div class="description-box">
+    <h3>وصف السيارة</h3>
+    <p>{{ car.description|linebreaks }}</p>
+</div>
+{% endif %}
+
+
+        <div class="actions">
+            {% if car.status == "available" %}
+<a href="{% url 'book_car' car.id %}" class="btn-book">
+    <i class='bx bx-calendar-check'></i>
+    احجز الآن
+</a>
+            {% else %}
+                <span class="badge reserved">غير متاحة حالياً</span>
+            {% endif %}
+
+            <a href="#"
+   class="btn-whatsapp"
+   onclick="sendWhatsAppMessage(event)">
+   <i class='bx bxl-whatsapp'></i>
+   استفسار عبر واتساب
+</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    function sendWhatsAppMessage(event) {
+    event.preventDefault();
+
+    const phone = "212754179212"; // رقمك بدون +
+    
+    const message = `
+مرحبًا 👋
+أود الاستفسار عن السيارة التالية:
+
+🚗 السيارة: {{ car.brand }} {{ car.model }}
+📅 سنة الصنع: {{ car.year }}
+💰 السعر: {{ car.price }} درهم
+⛽ الوقود: {{ car.get_fuel_type_display }}
+⚙️ ناقل الحركة: {{ car.get_transmission_display }}
+
+🔗 رابط الإعلان:
+{{ request.build_absolute_uri }}
+
+شكرًا لكم 🌟
+    `;
+
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+function changeImage(element) {
+    const mainImage = document.getElementById("mainImage");
+
+    // تغيير الصورة الرئيسية
+    mainImage.src = element.src;
+
+    // إزالة active من الجميع
+    document.querySelectorAll(".thumb").forEach(img => {
+        img.classList.remove("active");
+    });
+
+    // إضافة active للصورة الحالية
+    element.classList.add("active");
+}
+
+
+let thumbs = document.querySelectorAll(".thumb");
+let currentIndex = 0;
+
+function showImage(index) {
+    if (index < 0) index = thumbs.length - 1;
+    if (index >= thumbs.length) index = 0;
+
+    document.getElementById("mainImage").src = thumbs[index].src;
+    thumbs.forEach(t => t.classList.remove("active"));
+    thumbs[index].classList.add("active");
+
+    currentIndex = index;
+}
+
+function nextImage() {
+    showImage(currentIndex + 1);
+}
+
+function prevImage() {
+    showImage(currentIndex - 1);
+}
+
+
+</script>
+
+{% endblock %}

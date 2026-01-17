@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}الرئيسية{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-wrapper">
+        <div class="hero-content">
+
+         
+
+            <h1>
+                اعثر على سيارتك <br>
+                <span>بسهولة واحترافية</span>
+            </h1>
+
+            <p>
+                سيارات جديدة ومستعملة مختارة بعناية،  
+                حجز سريع وتجربة استخدام عصرية وآمنة.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'car_list' %}" class="btn btn-primary btn-lg">
+                    تصفح السيارات
+                </a>
+                <a href="#booking" class="btn btn-outline-light btn-lg">
+                    كيف يتم الحجز؟
+                </a>
+            </div>
+
+           
+        </div>
+    </div>
+</section>
+
+
+<!-- CARS -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">السيارات المتوفرة</h2>
+
+        <div class="row g-4">
+            {% for car in cars %}
+            <div class="col-md-4">
+                <div class="card car-card h-100">
+                    <img src="{{ car.image.url }}" alt="{{ car.brand }}">
+                    <div class="card-body">
+                        <h5>{{ car.brand }} {{ car.model }}</h5>
+                        <p class="price">{{ car.price }} درهم</p>
+
+                        <a href="{% url 'car_detail' car.id %}"
+                           class="btn btn-outline-primary btn-sm">
+                           التفاصيل
+                        </a>
+
+                        {% if car.status == "available" %}
+                        <a href="{% url 'book_car' car.id %}"
+                           class="btn btn-primary btn-sm">
+                           احجز
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">لا توجد سيارات حاليًا</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="booking-process">
+    <div class="container">
+        <h2 class="section-title">كيف تتم عملية الحجز؟</h2>
+
+        <div class="booking-steps">
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <i class='bx bx-search-alt'></i>
+                <h5>استكشف السيارات</h5>
+                <p>
+                    تصفح السيارات المتوفرة مع الصور، السعر، والمواصفات
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <i class='bx bx-select-multiple'></i>
+                <h5>اختر السيارة</h5>
+                <p>
+                    اختر السيارة المناسبة لك واطلع على تفاصيلها كاملة
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <i class='bx bx-calendar-check'></i>
+                <h5>أرسل طلب الحجز</h5>
+                <p>
+                    أدخل معلوماتك وأرسل طلب الحجز بسهولة
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <i class='bx bx-phone-call'></i>
+                <h5>تأكيد سريع</h5>
+                <p>
+                    يتم التواصل معك لتأكيد الحجز واستلام السيارة
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% if offers %}
+<section class="hero-slider">
+  <div class="hero-track">
+
+    {% for offer in offers %}
+    <div class="hero-card">
+      <!-- IMAGE -->
+      <div class="offer-image">
+        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+        {% if offer.discount_percent %}
+        <div class="discount-circle">
+          -{{ offer.discount_percent }}%
+        </div>
+        {% endif %}
+      </div>
+      <!-- BUTTON -->
+      <div class="offer-btn-wrapper">
+        <a href="{% url 'offers:offer_detail' offer.id %}" class="offer-btn">
+          مشاهدة العرض
+        </a>
+      </div>
+    </div>
+    {% empty %}
+      <p>لا توجد عروض حالياً</p>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+<!-- CTA -->
+<section class="cta-pro">
+    <div class="cta-overlay"></div>
+
+    <div class="container cta-content">
+        <h2>جاهز لحجز سيارتك اليوم؟</h2>
+        <p>
+            اختر سيارتك الآن وتمتع بتجربة حجز سريعة وآمنة
+        </p>
+        <div class="cta-actions">
+            <a href="{% url 'car_list' %}" class="btn-cta">
+                <i class='bx bx-car'></i>
+                تصفح السيارات
+            </a>
+            <a href="{% url 'car_list' %}" class="btn-cta-outline">
+                <i class='bx bx-calendar-check'></i>
+                احجز الآن
+            </a>
+        </div>
+    </div>
+</section>
+<!-- BRANDS -->
+<section class="brands-section">
+    <div class="container">
+        <h3 class="brands-title">الماركات المتوفرة لدينا</h3>
+    </div>
+  <div class="brands-slider">
+  <div class="brands-track">
+
+    <!-- ===== المجموعة الأصلية ===== -->
+    <img src="{% static 'images/15.jpg' %}">
+    <img src="{% static 'images/5.jpg' %}">
+    <img src="{% static 'images/3.jpg' %}">
+    <img src="{% static 'images/8.jpg' %}">
+    <img src="{% static 'images/4.jpg' %}">
+    <img src="{% static 'images/10.jpg' %}">
+    <img src="{% static 'images/7.jpg' %}">
+    <img src="{% static 'images/9.jpg' %}">
+    <img src="{% static 'images/11.jpg' %}">
+    <img src="{% static 'images/6.jpg' %}">
+    <img src="{% static 'images/16.jpg' %}">
+    <img src="{% static 'images/17.jpg' %}">
+    <img src="{% static 'images/18.jpg' %}">
+    <img src="{% static 'images/21.jpg' %}">
+    <img src="{% static 'images/22.jpg' %}">
+    <img src="{% static 'images/23.jpg' %}">
+    <img src="{% static 'images/24.jpg' %}">
+
+    <!-- ===== نفس المجموعة (مكررة) ===== -->
+    <img src="{% static 'images/15.jpg' %}">
+    <img src="{% static 'images/5.jpg' %}">
+    <img src="{% static 'images/3.jpg' %}">
+    <img src="{% static 'images/8.jpg' %}">
+    <img src="{% static 'images/4.jpg' %}">
+    <img src="{% static 'images/10.jpg' %}">
+    <img src="{% static 'images/7.jpg' %}">
+    <img src="{% static 'images/9.jpg' %}">
+    <img src="{% static 'images/11.jpg' %}">
+    <img src="{% static 'images/6.jpg' %}">
+    <img src="{% static 'images/16.jpg' %}">
+    <img src="{% static 'images/17.jpg' %}">
+    <img src="{% static 'images/18.jpg' %}">
+    <img src="{% static 'images/21.jpg' %}">
+    <img src="{% static 'images/22.jpg' %}">
+    <img src="{% static 'images/23.jpg' %}">
+    <img src="{% static 'images/24.jpg' %}">
+
+  </div>
+</div>
+
+</section>
+
+{% endblock %}

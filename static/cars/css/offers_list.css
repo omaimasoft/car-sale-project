@@ -1,0 +1,391 @@
+/* ================= ROOT VARIABLES ================= */
+:root {
+  --primary: #1e40af;
+  --primary-dark: #1e3a8a;
+  --accent: #dc2626;
+  --bg: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+/* ================= HERO OFFERS ================= */
+.offers-hero {
+  position: relative;
+  width: 1530px;
+  height: 500px;
+  background-image: url("/static/images/126.png");
+  background-size: cover;
+  background-position: center;
+  margin-top: -100px;
+  padding: 20px;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+html, body {
+  overflow-x: hidden;
+}
+/* طبقة تغميق خفيفة */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(15, 23, 42, 0.419),
+    rgba(15, 23, 42, 0.073)
+  );
+}
+
+/* ================= HERO CONTENT CENTERED ================= */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* توسيط عمودي */
+  align-items: center;       /* توسيط أفقي */
+  text-align: center;        /* توسيط النص */
+
+  color: #ffffff;
+}
+
+/* العنوان */
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+/* الوصف */
+.hero-content p {
+  font-size: 18px;
+  max-width: 520px;
+  margin-bottom: 26px;
+  color: #f6f8f6;
+}
+
+/* الزر */
+.hero-btn {
+  background: #1e40af;
+  color: #ffffff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  background: #1e3a8a;
+}
+
+/* Button */
+.offers-hero-btn {
+  background: #1e40af;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(30,64,175,0.4);
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .offers-hero {
+    height: 320px;
+  }
+
+  .offers-hero-content {
+    padding: 0 24px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .offers-hero-title {
+    font-size: 30px;
+  }
+
+  .offers-hero-subtitle {
+    font-size: 16px;
+  }
+}
+
+
+/* ================= GLOBAL ================= */
+.offers-section {
+  background: var(--bg);
+  padding: 80px 0;
+  direction: rtl;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+.offers-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.offers-subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+/* ================= GRID ================= */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ================= CARD ================= */
+.offer-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* ================= IMAGE ================= */
+.offer-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.offer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BADGE */
+.offer-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.offer-badge.expired {
+  background: #6b7280;
+}
+
+/* ================= CONTENT ================= */
+.offer-content {
+  padding: 20px;
+}
+
+.offer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.offer-car {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* PRICE */
+.offer-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.price-new {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.price-old {
+  font-size: 15px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+/* EXPIRE */
+.offer-expire {
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.offer-expire.expired {
+  color: #6b7280;
+}
+
+/* BUTTON */
+.offer-btn {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  padding: 12px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.offer-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= EXPIRED ================= */
+.offer-expired {
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+/* ================= EMPTY ================= */
+.no-offers {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.pagination-box {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li a,
+.pagination li span {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-weight: 800;
+  text-decoration: none;
+
+  color: #0f2a44;
+  background: #eef2f7;
+  transition: 0.3s;
+}
+
+.pagination li a:hover {
+  background: linear-gradient(135deg, #0f2a44, #b11226);
+  color: #fff;
+}
+
+.pagination li.active span {
+  background: linear-gradient(135deg, #0f2a44, #b11226);
+  color: #fff;
+}
+/* ================= PRICES ================= */
+.prices {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+/* السعر الجديد */
+.new-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #16a34a; /* أخضر احترافي */
+}
+
+/* السعر القديم */
+.old-price {
+    font-size: 15px;
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+/* عند انتهاء العرض */
+.offer-expired .new-price {
+    color: #6b7280;
+}
+
+.offer-expired .old-price {
+    color: #9ca3af;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .offers-title {
+    font-size: 28px;
+  }
+
+  .offers-subtitle {
+    font-size: 16px;
+  }
+}
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+  .offers-hero {
+    width: 100%;
+    height: 300px;
+
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: -80px;
+    background-position: center;
+  }
+}
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 23px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .hero-btn {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+}

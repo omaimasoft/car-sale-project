@@ -1,0 +1,796 @@
+/* ===============================
+   DESIGN SYSTEM
+================================ */
+:root {
+    --blue: #1e88e5;
+    --blue-dark: #0d47a1;
+    --text-dark: #1c1c1c;
+    --text-muted: #6b7280;
+    --bg: #f4f7fb;
+    --white: #ffffff;
+}
+/* ===============================
+   CARS SECTION
+================================ */
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e3a8a; /* أزرق داكن */
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ===============================
+   CAR CARD
+================================ */
+.car-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(30, 64, 175, 0.25);
+}
+
+/* ===============================
+   IMAGE
+================================ */
+.car-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* ===============================
+   CARD BODY
+================================ */
+.car-card .card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+/* ===============================
+   CAR NAME
+================================ */
+.car-card h5 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #102362; /* أزرق داكن */
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   PRICE
+================================ */
+.car-card .price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #16a34a; /* أخضر */
+  margin-bottom: 15px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.car-card .btn {
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 14px;
+  margin: 3px;
+}
+
+.car-card .btn-outline-primary {
+  color: #1e40af;
+  border-color: #1e40af;
+}
+
+.car-card .btn-outline-primary:hover {
+  background: #1e40af;
+  color: #ffffff;
+}
+
+.car-card .btn-primary {
+  background: linear-gradient(135deg, #1e40af, #d81d20);
+  border: none;
+}
+
+.car-card .btn-primary:hover {
+  background: linear-gradient(135deg, #1e3a8a, #d81d20);
+}
+
+/* ===============================
+   RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+}
+
+/* ===============================
+   HERO (PREMIUM – FINAL)
+================================ */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+  
+  /* صورة + إحساس سينمائي */
+  background:
+    url("/static/images/120.jpg") center/cover no-repeat;
+}
+
+.hero {
+  min-height: 88vh;
+  margin-top: -50px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 65vh;
+  }
+}
+
+
+/* Overlay احترافي (الذي عندك – ممتاز) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(15, 42, 68, .75),
+      rgba(15, 42, 68, .35)
+    );
+  z-index: 1;
+}
+
+/* Wrapper للمحتوى */
+.hero-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* محتوى الهيرو */
+.hero-content {
+  max-width: 650px;
+  animation: heroFade 1s ease forwards;
+}
+
+/* شارة صغيرة */
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* العنوان */
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+  color: #90caf9;
+}
+
+/* الوصف */
+.hero-content p {
+  font-size: 19px;
+  color: #e5e7eb;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+/* الأزرار */
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.hero-actions .btn {
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+/* ===============================
+   HERO STATS
+================================ */
+.hero-stats {
+  display: flex;
+  gap: 40px;
+}
+
+.hero-stats div {
+  text-align: center;
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.hero-stats span {
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+@keyframes heroFade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+/* ===============================
+   CTA PREMIUM
+================================ */
+.cta-pro {
+    position: relative;
+    padding: 90px 20px;
+    background:
+        url("/static/images/cta-bg.jpg") center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(13,71,161,.85),
+        rgba(30,113,184,.85)
+    );
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+}
+
+.cta-pro h2 {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.cta-pro p {
+    font-size: 18px;
+    color: #e3f2fd;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.btn-cta,
+.btn-cta-outline {
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+/* PRIMARY */
+.btn-cta {
+    background: #fff;
+    color: #0d47a1;
+    box-shadow: 0 18px 40px rgba(0,0,0,.25);
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+}
+
+/* OUTLINE */
+.btn-cta-outline {
+    border: 2px solid rgba(255,255,255,.7);
+    color: #fff;
+}
+
+.btn-cta-outline:hover {
+    background: rgba(255,255,255,.15);
+}
+/* ===============================
+   BRANDS SECTION
+================================ */
+.brands-section {
+    background: #f9fafb;
+    padding: 60px 0;
+}
+
+.brands-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 35px;
+    color: #1f2937;
+}
+
+.brands-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.brands-logos img {
+    height: 50px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: .3s ease;
+}
+
+.brands-logos img:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .brands-logos {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+    }
+
+    .brands-logos img {
+        height: 42px;
+    }
+}
+/* ===============================
+   BRANDS MOVING STRIP
+================================ */
+.brands-section {
+    background: #f9fafb;
+    padding: 60px 0 30px;
+}
+
+.brands-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #1f2937;
+}
+
+/* الحاوية */
+.brands-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* الشريط المتحرك */
+.brands-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: max-content;
+
+    animation: brandsScroll 25s linear infinite;
+}
+
+/* الصور */
+.brands-track img {
+    height: 55px;
+    object-fit: contain;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: .3s ease;
+}
+
+/* Hover */
+.brands-track img:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+/* إيقاف الحركة عند المرور (اختياري) */
+.brands-slider:hover .brands-track {
+    animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes brandsScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .brands-track img {
+        height: 45px;
+    }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+    .cta-pro h2 {
+        font-size: 30px;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    .btn-cta,
+    .btn-cta-outline {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+
+
+/* ===============================
+   HOW IT WORKS
+================================ */
+.steps i {
+    font-size: 52px;
+    color: var(--blue);
+    margin-bottom: 15px;
+}
+
+.steps h6 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* ===============================
+   CTA
+================================ */
+.cta {
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    color: #fff;
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+/* ===============================
+   BOOKING PROCESS (PRO UX)
+================================ */
+.booking-process {
+    background: #fff;
+    padding: 80px 20px;
+}
+
+.booking-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+}
+
+/* الخط الواصل */
+.booking-steps::before {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(to right, #1e88e5, #90caf9);
+    z-index: 0;
+}
+
+.step-card {
+    background: #f9fbff;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: all .35s ease;
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.step-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 70px rgba(0,0,0,.15);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e88e5, #0d47a1);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-card i {
+    font-size: 38px;
+    color: #1e88e5;
+    margin-bottom: 15px;
+}
+
+.step-card h5 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.step-card p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.7;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 992px) {
+    .booking-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-steps::before {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .booking-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+}
+/*hrro final*/
+@media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
+    background-position: center top;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 25px;
+  }
+}
+/*عرض خاص*/
+/* ===== SECTION ===== */
+
+
+/* ===== GRID ===== */
+.hero-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ===== CARD ===== */
+
+.offer-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #152db9;
+    margin-bottom: 14px;
+    padding-inline: 5px;
+
+    text-align: center;   /* ⭐ هذا هو المطلوب */
+}
+
+
+
+/* ===== IMAGE ===== */
+.offer-image {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+
+    height: 320px;
+
+    margin-left: auto;   /* ✅ توسيط حقيقي */
+    margin-right: auto;  /* ✅ توسيط حقيقي */
+
+    border-radius: 50px;
+    overflow: hidden;
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.hero-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+@media (max-width: 768px) {
+    .hero-track {
+        grid-template-columns: 1fr;   /* ✅ عمود واحد */
+        justify-items: center;        /* ✅ توسيط العناصر */
+    }
+}
+
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.offer-image:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+}
+
+.offer-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+.hero-card {
+  margin-bottom: 50px;
+}
+
+.offer-btn {
+    padding: 12px 34px;
+    background: #3e7cc7;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.offer-btn:hover {
+    background: #0f0a66;
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+
+    .offer-image {
+        width: 100%;
+        max-width: 88%;
+        height: 220px;     /* 🔥 تقليل الارتفاع */
+        border-radius: 16px;
+    }
+
+    .offer-btn {
+        width: 50%;        /* 🔥 الزر يملأ العرض */
+        text-align: center;
+        padding: 12px 0;
+        font-size: 15px;
+    }
+}
+@media (max-width: 480px) {
+
+    .offer-image {
+        height: 190px;
+    }
+
+    .offer-btn {
+        font-size: 14px;
+    }
+}

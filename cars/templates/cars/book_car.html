@@ -1,0 +1,69 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block title %}حجز سيارة | {{ car.brand }} {{ car.model }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/book_car.css' %}">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<section class="booking-section">
+    <div class="container">
+
+        <div class="booking-card">
+
+            <!-- INFO -->
+            <div class="booking-info">
+                <h2>{{ car.brand }} {{ car.model }}</h2>
+                <p class="price">{{ car.price }} درهم</p>
+
+                <ul>
+                    <li><i class='bx bx-calendar'></i> سنة الصنع: {{ car.year }}</li>
+                    <li><i class='bx bx-gas-pump'></i> الوقود: {{ car.get_fuel_type_display }}</li>
+                    <li><i class='bx bx-transfer-alt'></i> ناقل الحركة: {{ car.get_transmission_display }}</li>
+                </ul>
+            </div>
+
+            <!-- FORM -->
+            <div class="booking-form">
+                <h3>طلب حجز السيارة</h3>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert-success">
+            <i class='bx bx-check-circle'></i>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="name" placeholder="الاسم الكامل" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class='bx bx-phone'></i>
+                        <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+                    </div>
+
+                    <button type="submit" class="btn-book">
+                        <i class='bx bx-calendar-check'></i>
+                        إرسال طلب الحجز
+                    </button>
+                </form>
+
+                <p class="note">
+                    سيتم التواصل معك في أقرب وقت لتأكيد الحجز
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

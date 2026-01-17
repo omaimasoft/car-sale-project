@@ -1,0 +1,453 @@
+/* =======================================================
+   ROOT COLORS
+======================================================= */
+:root {
+  --primary: #1E71B8;
+  --secondary: #0D3B66;
+  --accent: #de0227;
+  --light: #F8F9FA;
+  --dark: #0F2A44;
+  --text: #333;
+}
+
+/* =======================================================
+   GLOBAL RESET
+======================================================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  overflow-x: visible; /* مهم جدًا لـ sticky */
+   direction: rtl;
+}
+
+
+/* =======================================================
+   TOP BAR (STICKY)
+======================================================= */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10002;
+  background: var(--secondary);
+  color: #ffffff;
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+/* =======================================================
+   HEADER FINAL (LOGO RIGHT – NAV CENTER)
+======================================================= */
+.main-header {
+  position: sticky;
+  top: 17px;
+  z-index: 101;
+  background: #ffffff; /* خلفية بيضاء */   
+  /* ✨ شادو أزرق ناعم */
+  box-shadow: 0 6px 18px rgba(30, 112, 184, 0.532);
+  border-bottom: none;
+  /* ⬇️ حجم أصغر */
+  padding: 4px 0;
+}
+
+
+.main-header .container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+
+
+/* NAV CENTER */
+.navbar {
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* LINKS */
+.navbar .nav-link {
+  padding: 6px 14px;
+  font-weight: 600;
+  color: var(--secondary);
+  position: relative;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--accent);
+}
+
+
+/* =======================================================
+   MOBILE FIX
+======================================================= */
+@media (max-width: 992px) {
+  .navbar {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .navbar-brand {
+    margin-left: 0;
+  }
+}
+
+/* خط متحرك تحت الرابط */
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;   /* ✅ بدل 0 */
+  right: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* =======================================================
+   NAVBAR TOGGLER (MOBILE)
+======================================================= */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+/* =======================================================
+   FOOTER PREMIUM
+======================================================= */
+.footer-premium {
+  background: linear-gradient(180deg, #0f2a44, #081b2d);
+  color: #cbd5e1;
+  padding: 70px 0 25px;
+  direction: rtl;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* GRID */
+.footer-top {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 45px;
+}
+
+.footer-logo {
+  max-width: 170px;
+  height: auto;
+  display: block;
+}
+
+.brand-desc {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: #cbd5e1;
+  max-width: 360px;
+}
+
+/* TITLES */
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.footer-col h4::after {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(90deg, #1E71B8, #de0227);
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  border-radius: 10px;
+}
+
+/* LISTS */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.footer-col ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: .3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-right: 6px;
+}
+
+/* SOCIAL */
+.social-modern {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-modern a {
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+  transition: all .35s ease;
+}
+
+.social-modern a:hover {
+  background: linear-gradient(135deg, #1E71B8, #de0227);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col h4::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .social-modern {
+    justify-content: center;
+  }
+
+  .brand-desc {
+    margin: 0 auto;
+  }
+}
+
+
+/* =======================================================
+   WHATSAPP FLOAT
+======================================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 55px;
+  height: 55px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  z-index: 9999;
+}
+
+/* LOGO LEFT */
+.navbar-brand {
+  margin-inline-end: auto;   /* يدفع الشعار لليسار في RTL */
+}
+
+.logo {
+  max-width: 180px;
+  margin: 0;                 /* احذفي أي margin قديم */
+}
+
+
+/* =======================================================
+   LOGO LOAD ANIMATION
+======================================================= */
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =======================================================
+   LOGO STICKY SCALE
+======================================================= */
+.main-header {
+  transition: padding 0.3s ease;
+}
+
+.main-header.sticky .logo,
+.main-header.sticky .navbar-brand {
+  transform: scale(0.85);
+}
+
+
+
+.logo,
+.navbar-brand {
+  animation: logoFadeIn 0.8s ease-out forwards;
+}
+
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media (max-width: -992px) {
+  .main-header {
+    position: relative;
+    top: 0;
+  }
+
+  .main-nav {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 40px 0;
+  }
+}
+/* ================================
+   FOOTER LOGO FIX - MOBILE
+================================ */
+@media (max-width: 576px) {
+  .footer-logo {
+    max-width: 140px;   /* 👈 صغرنا الشعار */
+    margin: 0 auto 12px;
+  }
+
+  .brand-desc {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .footer-top {
+    padding-top: 20px;
+  }
+}
+
+/* ===============================
+   MOBILE NAVBAR (PREMIUM)
+================================ */
+@media (max-width: 992px) {
+
+  /* زر القائمة ☰ */
+  .navbar-toggler {
+    margin-right: auto;   /* في RTL → إلى اليسار */
+    margin-left: 0;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(30, 113, 184, 0.08);
+    transition: all .3s ease;
+  }
+
+  .navbar-toggler:hover {
+    background: rgba(30, 113, 184, 0.18);
+  }
+
+  .navbar-toggler-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* القائمة المنسدلة */
+  .navbar-collapse {
+    background: #ffffff;
+    border-radius: 18px;
+    margin-top: 12px;
+    padding: 12px 0;
+    box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    animation: menuFade .35s ease;
+  }
+
+  /* الروابط */
+  .navbar-nav {
+    gap: 0;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 12px 20px;
+    font-size: 16px;
+    transition: background .25s ease, color .25s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background: #f1f5f9;
+  }
+
+  .navbar-nav .nav-link.active {
+    color: var(--accent);
+    font-weight: 700;
+    background: rgba(222, 2, 39, 0.08);
+    border-right: 4px solid var(--accent);
+  }
+}
+
+/* Animation */
+@keyframes menuFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

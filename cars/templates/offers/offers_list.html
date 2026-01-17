@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}عروض السيارات{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'cars/css/offers_list.css' %}">
+{% endblock %}
+{% block content %}
+<section class="offers-section">
+  <div class="container">
+<!-- HERO FULL WIDTH -->
+<section class="offers-hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>عروض السيارات المميزة</h1>
+    <p>استفد من أقوى العروض الحصرية قبل انتهائها</p>
+  </div>
+</section>
+    <!-- ================= OFFERS GRID ================= -->
+    <div class="offers-grid">
+      {% for offer in page_obj %}
+
+      <article class="offer-card {% if offer.is_expired %}offer-expired{% endif %}">
+        <!-- IMAGE -->
+        <div class="offer-image">
+          <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+          {% if not offer.is_expired %}
+         <span class="offer-badge">
+           -{{ offer.discount_percent }}%
+        </span>
+          {% else %}
+          <span class="offer-badge expired">
+            منتهي
+          </span>
+          {% endif %}
+        </div>
+        <!-- CONTENT -->
+        <div class="offer-content">
+          <h3 class="offer-title">{{ offer.title }}</h3>
+          <p class="offer-car">{{ offer.car_name }}</p>
+          <div class="prices">
+            <span class="new-price">{{ offer.new_price }} DH</span>
+            <span class="old-price">{{ offer.old_price }} DH</span>
+          <div class="price-note">
+          </div>
+          </div>
+          <!-- DATE -->
+          {% if not offer.is_expired %}
+          <div class="offer-expire">
+             ينتهي في {{ offer.end_date|date:"d/m/Y H:i" }}
+          </div>
+          {% else %}
+          <div class="offer-expire expired">
+             انتهى العرض
+          </div>
+          {% endif %}
+          <!-- BUTTON -->
+          <a href="{% url 'offers:offer_detail' offer.id %}" class="offer-btn">
+            استفد من العرض
+          </a>
+        </div>
+      </article>
+      {% empty %}
+        <p class="no-offers">لا توجد عروض متاحة حالياً</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination-box">
+  <ul class="pagination">
+
+    {% if page_obj.has_previous %}
+      <li>
+        <a href="?page={{ page_obj.previous_page_number }}">‹</a>
+      </li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <li class="active"><span>{{ num }}</span></li>
+      {% else %}
+        <li>
+          <a href="?page={{ num }}">{{ num }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <li>
+        <a href="?page={{ page_obj.next_page_number }}">›</a>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

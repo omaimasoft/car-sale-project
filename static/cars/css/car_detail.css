@@ -1,0 +1,265 @@
+/* ===============================
+   DESCRIPTION
+================================ */
+.description-box {
+  margin-top: 30px;
+  padding: 22px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border-right: 5px solid #1e40af;
+}
+
+.description-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.description-box p {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.9;
+}
+
+/* ===== AVITO STYLE CAR DETAIL ===== */
+.car-detail-avito {
+    direction: rtl;
+}
+
+/* ===== GALLERY ===== */
+.gallery-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.main-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.thumb {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    border: 2px solid transparent;
+}
+
+.thumb.active {
+    opacity: 1;
+    border-color: #1E71B8;
+}
+
+/* ===== INFO ===== */
+.info-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.car-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 26px;
+    color: #e63946;
+    font-weight: bold;
+}
+/* ===== SPECS WITH ICONS ===== */
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.specs-grid li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: #f8f9fa;
+    padding: 12px 14px;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.specs-grid i {
+    font-size: 22px;
+    color: #1E71B8;
+    min-width: 26px;
+}
+
+.specs-grid span {
+    flex: 1;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.specs-grid strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.desc-box {
+    margin-top: 20px;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    flex: 1;
+}
+
+.btn-whatsapp {
+    flex: 1;
+    background: #25D366;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+/* ===== BOOK BUTTON ===== */
+.btn-book {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: linear-gradient(135deg, #1E71B8, #0D47A1);
+    color: #fff;
+    padding: 14px 18px;
+
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+
+    transition: all .3s ease;
+    box-shadow: 0 10px 25px rgba(30,113,184,.35);
+}
+
+.btn-book i {
+    font-size: 20px;
+}
+
+.btn-book:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(30,113,184,.45);
+    color: #fff;
+}
+/* ===== MAIN IMAGE ===== */
+.main-image {
+    position: relative;
+}
+
+/* ===== IMAGE COUNT BADGE ===== */
+.image-count {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,.65);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+}
+
+/* ===== HINT ON HOVER ===== */
+.main-image::after {
+    content: "اضغط لعرض باقي الصور";
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    opacity: 0;
+    transition: .3s;
+}
+
+.main-image:hover::after {
+    opacity: 1;
+}
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.nav-arrow.left { right: 15px; }
+.nav-arrow.right { left: 15px; }
+
+.nav-arrow:hover {
+    background: rgba(0,0,0,.8);
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 768px) {
+    .main-image img {
+        height: 260px;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================================
+   FINAL FIX – DESCRIPTION FULL TEXT
+================================== */
+.car-detail-avito .description-box,
+.car-detail-avito .description-box p {
+  display: block !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+
+  -webkit-box-orient: unset !important;
+}
