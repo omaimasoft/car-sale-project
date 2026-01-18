@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'django-insecure-ybs57+h@!ug9m@)*2=*oq561-a$xn35m1hj4q7ehnr*z@9qxu!'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -55,7 +55,6 @@ INSTALLED_APPS = [
 
     # 👇 أضف هذا السطر (مهم جدًا)
     'django.contrib.sitemaps',
-
     # apps
     'cars',
     'contact',
