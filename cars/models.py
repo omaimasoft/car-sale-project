@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import models
+from django.urls import reverse
 
 
 class Car(models.Model):
@@ -80,6 +81,8 @@ class Car(models.Model):
 
     def __str__(self):
             return f"{self.brand} {self.model} ({self.year})"
+    def get_absolute_url(self):
+        return reverse('car_detail', args=[self.id])
 
     created_at = models.DateTimeField(auto_now_add=True)
 class CarImage(models.Model):
