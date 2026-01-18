@@ -19,10 +19,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ybs57+h@!ug9m@)*2=*oq561-a$xn35m1hj4q7ehnr*z@9qxu!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = [
+    'omaimaboustik.pythonanywhere.com',
+    'autoboustik.com',
+    'www.autoboustik.com',
+]
 CSRF_TRUSTED_ORIGINS = [
     'https://omaimaboustik.pythonanywhere.com',
     'https://autoboustik.com',
