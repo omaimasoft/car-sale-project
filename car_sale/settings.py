@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = '-c8&a@penk4*1fqgzo=vmz6m+o&worzvwi8r0a(2!6h4i+qjdf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
