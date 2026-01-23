@@ -515,7 +515,7 @@ body {
    CTA
 ================================ */
 .cta {
-    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    background: linear-gradient(135deg, #1E71B8, #C81E4A);
     color: #fff;
     padding: 90px 20px;
     text-align: center;
